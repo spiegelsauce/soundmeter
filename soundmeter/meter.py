@@ -92,7 +92,7 @@ class Meter(object):
             frames = []
             self.stream.start_stream()
             for i in range(self.num_frames):
-                data = self.stream.read(self.config.FRAMES_PER_BUFFER)
+                data = self.stream.read(self.config.FRAMES_PER_BUFFER, exception_on_overflow = False)
                 frames.append(data)
             self.output.seek(0)
             w = wave.open(self.output, 'wb')
